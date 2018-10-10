@@ -35,18 +35,27 @@ public class pizzaPriceGUI extends javax.swing.JDialog {
         size = new javax.swing.JLabel();
         inputField = new javax.swing.JTextField();
         calculateButton = new javax.swing.JButton();
-        outputLable = new javax.swing.JLabel();
+        subLable = new javax.swing.JLabel();
+        taxLable = new javax.swing.JLabel();
+        totalLable = new javax.swing.JLabel();
+        messageLable = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 0, 0));
 
         Title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        Title.setText("How much will your pizza cost?");
+        Title.setText("Grease monkey's great greasy pizza");
 
-        size.setText("Pizza Size");
+        size.setText("Pizza Size in CM");
 
         inputField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        inputField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputFieldActionPerformed(evt);
+            }
+        });
 
         calculateButton.setText("Calculate");
         calculateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +64,13 @@ public class pizzaPriceGUI extends javax.swing.JDialog {
             }
         });
 
-        outputLable.setText("Your pizza will cost:");
+        subLable.setText("Subtotal : ");
+
+        taxLable.setText("Tax : ");
+
+        totalLable.setText("Total : ");
+
+        jLabel1.setText("Making pizza with two all natural ingredients, Grease and monkey since 1952");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,35 +80,52 @@ public class pizzaPriceGUI extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(messageLable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(size)
-                                .addGap(72, 72, 72)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(calculateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputField)))
+                                .addGap(108, 108, 108)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(totalLable)
+                                    .addComponent(taxLable)
+                                    .addComponent(subLable)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(outputLable, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(137, 137, 137)
+                                .addComponent(size, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calculateButton)
+                                    .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 34, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(97, 97, 97))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(size)
                     .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(calculateButton)
-                .addGap(32, 32, 32)
-                .addComponent(outputLable)
-                .addGap(0, 89, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(subLable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(taxLable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(totalLable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(messageLable)
+                .addGap(0, 34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,7 +136,10 @@ public class pizzaPriceGUI extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -112,20 +147,46 @@ public class pizzaPriceGUI extends javax.swing.JDialog {
     
     private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
         
-        double diameter, labour, store, materials, cost;
+        final double LABOUR, STORE, MATERIALS, TAX;
+        double diameter,cost,total,taxed; 
+        
         DecimalFormat form = new DecimalFormat("###.00");
         //variable decalaration
-        labour = 1.00;
-        store = 1.50;
-        materials = 0.50;
+        LABOUR = 0.75;
+        STORE = 0.99;
+        MATERIALS = 0.50;
+        TAX = 0.13;
         diameter = Double.parseDouble(inputField.getText());
         
         //calculate cost
-        cost = labour + store + materials*diameter;
-        
+        cost = LABOUR + STORE * MATERIALS*diameter ;
+        taxed = cost*TAX;
+        total = cost+taxed;
         //print pizza cost        
-        outputLable.setText("The pizza will cost $"+form.format(cost));
+        subLable.setText("Subtotal : $" + form.format(cost));
+        taxLable.setText("Tax : $" + form.format(taxed));
+        totalLable.setText("Total : $"+form.format(total));
+        
+        if(diameter >= 51 && diameter <=150){
+            messageLable.setText("That is North American pizza. Fantastic for a party"); 
+        }
+        
+        else if(diameter >= 16 && diameter <=50){
+            messageLable.setText("That is a adequate pizza. Consider your hunger quashed.");
+        }
+        
+        else if(diameter >= 1 && diameter <=15){
+            messageLable.setText("That is a microscopic pizza. You will be hungry soon.");
+        }
+        
+        else{
+            messageLable.setText("That will be a comicly large pizza. Hope you dont eat it alone");    
+        }
     }//GEN-LAST:event_calculateButtonActionPerformed
+
+    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,8 +234,12 @@ public class pizzaPriceGUI extends javax.swing.JDialog {
     private javax.swing.JLabel Title;
     private javax.swing.JButton calculateButton;
     private javax.swing.JTextField inputField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel outputLable;
+    private javax.swing.JLabel messageLable;
     private javax.swing.JLabel size;
+    private javax.swing.JLabel subLable;
+    private javax.swing.JLabel taxLable;
+    private javax.swing.JLabel totalLable;
     // End of variables declaration//GEN-END:variables
 }
